@@ -5,6 +5,13 @@ const app = express();
 var handlebars  = require('express-handlebars');
 const port = 3000;
 
+const route = require('./routes');
+
+app.use(express.urlencoded({
+  extended:true
+}));
+app.use(express.json());
+
 app.use(express.static(path.join(__dirname,'public')));
 
 
@@ -18,14 +25,27 @@ app.engine('hbs', handlebars({
 }));
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,'resources/views'))
-app.get('/', (req, res) => {
+route(app);
+// app.get('/', (req, res) => {
    
-  res.render('home');
-})
-app.get('/news', (req, res) => {
+//   res.render('home');
+// })
+
+// app.get('/news', (req, res) => {
    
-  res.render('news');
-})
+//   res.render('news');
+// })
+
+// app.get('/search', (req, res) => {
+   
+//   res.render('search');
+// })
+
+// app.post('/search', (req, res) => {
+//   console.log(req.body);
+//   res.send('');
+// })
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
