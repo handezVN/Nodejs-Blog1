@@ -1,0 +1,21 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên Khóa Học</th>
+      <th scope="col">Hình Ảnh</th>
+      <th scope="col">Số Lượng</th>
+    </tr>
+  </thead>
+  <tbody>
+       {{#each cart}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.product.name}} </td>
+      <td><img  src="{{this.product.image}}" alt="Card image cap" class="card-img"></td>
+      <td>{{this.quantity}}</td>
+    </tr>
+        {{/each}}
+  </tbody>
+</table>
